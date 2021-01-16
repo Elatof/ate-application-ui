@@ -24,11 +24,7 @@ class Brands extends Component {
         return (
             <div>
                 <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                        </tr>
-                    </thead>
+                
                     <tbody>
                         {
                             this.state.items.map(item => <BrandItem item={item} />)
