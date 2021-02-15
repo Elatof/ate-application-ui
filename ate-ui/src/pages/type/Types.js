@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import BrandItem from './BrandItem';
+import TypeItem from './TypeItem';
+import { Link } from 'react-router-dom';
 
-class Brands extends Component {
+class Types extends Component {
 
     constructor() {
         super();
@@ -12,10 +13,10 @@ class Brands extends Component {
 
     componentDidMount() {
         let initialItems = [];
-        fetch('http://localhost:5000/ate-api/brands/')
+        fetch('http://localhost:5000/ate-api/types/')
             .then(response => { return response.json(); })
             .then(data => {
-                initialItems = data.map((BrandItem) => { return BrandItem });
+                initialItems = data.map((TypeItem) => { return TypeItem });
                 this.setState({ items: initialItems });
             });
     }
@@ -23,11 +24,11 @@ class Brands extends Component {
     render() {
         return (
             <div>
+                <Link to="/auth/types-create">Добавити новий тип спорядження</Link>
                 <table>
-                
                     <tbody>
                         {
-                            this.state.items.map(item => <BrandItem item={item} />)
+                            this.state.items.map(item => <TypeItem item={item} key={item.id} />)
                         }
                     </tbody>
                 </table>
@@ -35,4 +36,4 @@ class Brands extends Component {
         );
     }
 }
-export default Brands;
+export default Types;
