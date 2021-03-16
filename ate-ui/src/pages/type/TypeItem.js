@@ -1,15 +1,15 @@
 import React from 'react';
-import {NotificationManager} from 'react-notifications';
-
+import { NotificationManager } from 'react-notifications';
+import "./TypeItem.css";
 
 function TypeItem(props) {
     const typeItem = props.item;
 
     return (
-        <tr>
+        <tr className= "bottom">
             <td>{typeItem.id} |</td>
             <td>{typeItem.name}</td>
-            <td><button onClick={() => deleteElem(typeItem.id, typeItem.name)}>Видалити</button></td>
+            <td><button className="t" onClick={() => deleteElem(typeItem.id, typeItem.name)}>Видалити</button></td>
         </tr>
     );
 }

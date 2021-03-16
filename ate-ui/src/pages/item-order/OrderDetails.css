@@ -1,0 +1,83 @@
+div.mainDivOrderDetails{
+    color: rgba(144,104,63,255);
+    background-color: rgba(49,51,50,255);
+    border-style: solid;
+    position: 'relative';
+    margin-top: 0.2%; 
+    margin-left: 1%;
+    margin-right: 1%;
+    border-color: rgba(144,104,63,255);
+    color: white;
+    
+}
+
+div.customerDetails{
+    color: rgba(144,104,63,255);
+    position: 'relative';
+    margin-top: -25.7%; 
+    margin-left: 20%;
+    margin-right: 1%;  
+    color: white;
+}
+
+div.emolyeeDetails{
+    color: rgba(144,104,63,255);
+    position: 'relative';
+    margin-top: 13%; 
+    margin-left: 20%;
+    margin-right: 1%;  
+    color: white;
+}
+
+img.mainImg{
+    position: absolute;
+    top: 145px;
+    right: 25px;
+}
+
+b{
+    color: rgba(144,104,63,255);
+}
+
+button.deleteOrder {
+	background-color:#b10000;
+	-moz-border-radius:20px;
+	-webkit-border-radius:20px;
+	border-radius:28px;
+	border:1px solid lightblue;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+    position: 'relative';
+    position: absolute;
+    top: 250px;
+    right: 20px;
+	font-size:13px;
+	padding:3px 25px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+
+button:hover {
+	background-color:#c20202;
+}
+
+a.updateOrder {
+    background-color: rgb(184, 187, 4);
+    color: white;
+    padding: 3px 25px;
+    text-align: center; 
+    text-decoration: none;
+    position: absolute;
+    top: 280px;
+    right: 20px;
+    display: inline-block;
+    border:1px solid lightblue;
+    border-radius:28px;
+    font-size: 13px;
+}
+
+a.update:hover, a:active {
+    background-color: rgb(181, 201, 1);
+}

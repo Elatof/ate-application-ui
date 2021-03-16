@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NotificationManager } from 'react-notifications';
 import Cookies from 'universal-cookie';
+import './SignInForm.css'
 
 class SignInForm extends Component {
     constructor() {
@@ -58,23 +59,23 @@ class SignInForm extends Component {
 
         return (
             <div className="signin">
+                Для подальшої роботи у системі потрібно ввести свої персональні дані
                 <form onSubmit={this.onSubmit}>
                     <div>
-                        <input className="signin" type="text" id="name" required={true} placeholder="Enter your name" name="firstName" onChange={this.handleChange} />
+                        <input className="signin" type="text" id="name" required={true} placeholder="Введіть ім'я" name="firstName" onChange={this.handleChange} />
                     </div>
 
                     <div>
-                        <input className="signin" type="text" id="surname" required={true} placeholder="Enter your surname" name="secondName" onChange={this.handleChange} />
+                        <input className="signin" type="text" id="surname" required={true} placeholder="Введіть прізвище" name="secondName" onChange={this.handleChange} />
                     </div>
 
                     <div>
-                        <input className="signin" type="password" id="password" required={true} placeholder="Enter your password" name="password" onChange={this.handleChange} />
+                        <input className="signin" type="password" id="password" required={true} placeholder="Введіть пароль" name="password" onChange={this.handleChange} />
                     </div>
 
-                    <div>
-                        <button className="myButton">Sign in</button>
-                    </div>
+                    <button className="myButton">Увійти</button>
                 </form>
+                На цю сторінку вас автоматично переадресовує якщо: 1. Ви не авторизовані 2. Час сесії сплив (1 год.)
             </div>
         );
     }

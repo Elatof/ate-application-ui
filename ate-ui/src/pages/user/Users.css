@@ -1,0 +1,27 @@
+a.addNewUser {
+    background-color: rgb(5, 95, 5);
+    color: white;
+    padding: 3px 7px;
+    text-align: center; 
+    text-decoration: none;
+    display: inline-block;
+    border:1px solid lightblue;
+    border-radius:28px;
+    position: absolute;
+    top: 145px;
+    right: 16px;
+    font-size: 15px;
+}
+
+a.addNewUser:hover, a:active {
+    background-color: rgb(6, 100, 6);
+}
+
+div.mainDivUser{
+    color: rgba(144,104,63,255);
+    background-color: rgba(49,51,50,255);
+    border-style: solid;
+    position: 'relative';
+    margin-top: 0.2%; 
+    border-color: rgba(144,104,63,255);
+}

@@ -3,6 +3,7 @@ import { NotificationManager } from 'react-notifications';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import Cookies from 'universal-cookie';
+import "./NewOrder.css";
 
 class NewOrder extends Component {
     constructor() {
@@ -35,7 +36,8 @@ class NewOrder extends Component {
         fetch('http://localhost:5000/ate-api/items/?all=false', {
             headers: {
                 "Authorization": "Bearer_" + cookie.get('token')
-            }})
+            }
+        })
             .then(response => { return response.json(); })
             .then(data => {
                 initialItems = data.map((Item) => { return Item });
@@ -96,19 +98,20 @@ class NewOrder extends Component {
         }
 
         return (
-            <form onSubmit={this.onSubmit}>
-                <b>Створення нової оренди</b>
-                <div>
+            <div className="newOrder">
+                <form onSubmit={this.onSubmit}>
+                    <b>Створення нової оренди</b>
+                    <p></p>
                     Кінець оренди спорядження:
-                        <input type="date" id="endDate" required={true} placeholder="Enter endDate" name="endDate" onChange={this.handleChange} />
+                        <input className="newOrder" type="date" id="endDate" required={true} placeholder="Enter endDate" name="endDate" onChange={this.handleChange} />
                     <p />
-                    Спорядження: <Dropdown options={itemNames} onChange={handleItem} placeholder="Виберіть спорядження" />
+                    <Dropdown className="dropDown" options={itemNames} onChange={handleItem} placeholder="Виберіть спорядження" />
                     <p />
-                    Клієнт: <Dropdown options={customerNames} onChange={handleCustomer} placeholder="Виберіть клієнта" />
+                    <Dropdown className="dropDown" options={customerNames} onChange={handleCustomer} placeholder="Виберіть клієнта" />
                     <p />
-                </div>
-                <button className='addComment'>Підтвердити добавлення</button>
-            </form>
+                    <button className='myButton'>Підтвердити добавлення</button>
+                </form>
+            </div>
         );
     }
 } export default NewOrder;

@@ -1,21 +1,33 @@
 import React, { Component } from 'react';
 import { NotificationManager } from 'react-notifications';
 import Dropdown from 'react-dropdown';
+import "./NewUser.css";
 
-class NewAdmin extends Component {
+class NewUser extends Component {
     constructor() {
         super();
         this.state = {
             firstName: '',
             secondName: '',
-            isAdmin: 2,
-            password: ''
+            isAdmin: 1,
+            password: '',
+            departments: []
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
 
+    componentDidMount() {
+        let initialItems = [];
+
+        fetch('http://localhost:5000/ate-api/departments/')
+            .then(response => { return response.json(); })
+            .then(data => {
+                initialItems = data.map((Department) => { return Department });
+                this.setState({ departments: initialItems });
+            });
+    }
 
     handleChange(e) {
         let target = e.target;
@@ -25,7 +37,7 @@ class NewAdmin extends Component {
 
     onSubmit(e) {
         e.preventDefault();
-        
+
         fetch(`http://localhost:5000/ate-api/employees/`, {
             method: "POST",
             body: JSON.stringify(this.state),
@@ -55,22 +67,19 @@ class NewAdmin extends Component {
             this.setState({ department: handleItem });
         }
         return (
-            <form onSubmit={this.onSubmit}>
-                <div>
-                        Ім'я:
-                            <input type="text" id="firstName" placeholder="Enter name" name="firstName" required={true} value={this.state.firstName} onChange={this.handleChange} />
-                            <p />
-                        Прізвище:
-                            <input type="text" id="secondName" placeholder="Enter secondName" name="secondName" required={true} value={this.state.secondName} onChange={this.handleChange} />
-                            <p />
-                        Пароль:
-                            <input type="password" id="password" placeholder="Enter password" name="password" required={true} onChange={this.handleChange} />
-                            <p />
-                        Відділення: <Dropdown options={depatrmentNames} onChange={handleDepartment} placeholder="Виберіть відділення" />
-                </div>
-                <button className='addComment'>Підтвердити добавлення</button>
-            </form>
+            <div className="newUser">
+                Створення нового консультанта
+                <form onSubmit={this.onSubmit}>
+                    <input className="newUser" type="text" id="firstName" placeholder="Введіть ім'я" name="firstName" required={true} value={this.state.firstName} onChange={this.handleChange} />
+                    <p />
+                    <input className="newUser" type="text" id="secondName" placeholder="Введіть прізвище" name="secondName" required={true} value={this.state.secondName} onChange={this.handleChange} />
+                    <p />
+                    <input className="newUser" type="password" id="password" placeholder="Введіть паоль" name="password" required={true} onChange={this.handleChange} />
+                    <Dropdown className="dropDown" options={depatrmentNames} onChange={handleDepartment} placeholder="Виберіть відділення" />
+                    <button className='myButtonNewUser'>Підтвердити добавлення</button>
+                </form>
+            </div>
         );
     }
 }
-export default NewAdmin;
+export default NewUser;

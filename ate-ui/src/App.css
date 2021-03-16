@@ -1,0 +1,9 @@
+body {
+    background-image: url(https://res.cloudinary.com/elatof/image/upload/v1615110455/ate-project/b5a2d3d8f1af9eb606a5e5e4ec791e19_qq8q2v.webp    )
+}
+div.footer{
+    color: rgba(146,95,72,255);
+}
+h1.border{
+    -webkit-text-stroke: 1px solid white;
+}

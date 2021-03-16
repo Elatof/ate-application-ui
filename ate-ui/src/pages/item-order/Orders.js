@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import Order from './Order';
+import "./Orders.css";
 
 class Orders extends Component {
 
@@ -30,15 +31,16 @@ class Orders extends Component {
 
     render() {
         return (
-            <div>
-                <Link to="/auth/orders-create">Створити замовлення</Link>
+            <div className="mainDivOrder">
+                Список всіх створених замовлень
+                <Link className="addNewOrder" to="/auth/orders-create">Створити замовлення</Link>
                 <table>
                     <thead>
                         <tr>
                             <th>Номер</th>
                             <th>Назва</th>
-                            <th>Початок оренди</th>
-                            <th>Кінець оренди</th>
+                            <th>Початок</th>
+                            <th>Кінець</th>
                             <th></th>
                         </tr>
                     </thead>

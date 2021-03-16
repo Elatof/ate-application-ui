@@ -1,5 +1,6 @@
 import React from 'react';
 import {NotificationManager} from 'react-notifications';
+import './BrandItem.css';
 
 
 function BrandItem(props) {
@@ -12,11 +13,11 @@ function BrandItem(props) {
     }
 
     return (
-        <tr>
+        <tr className= "bottom">
             <td>{brandItem.id} |</td>
             <td>{brandItem.name}</td>
             <td><img src={img} alt="Icon of brand" width="75" height="75"></img></td>
-            <td><button onClick={() => deleteElem(brandItem.id, brandItem.name)}>Видалити</button></td>
+            <td><button className="t" onClick={() => deleteElem(brandItem.id, brandItem.name)}>Видалити</button></td>
         </tr>
     );
 }

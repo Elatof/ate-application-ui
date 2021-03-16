@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import User from './User';
+import "./Users.css";
 
 class Users extends Component {
 
@@ -23,8 +24,9 @@ class Users extends Component {
 
     render() {
         return (
-            <div>
-                <Link to="/auth/users-create">Добавити нового консультанта</Link>
+            <div className="mainDivUser">
+                Список консультантів всіх відділень 
+                <Link className="addNewUser" to="/auth/users-create">Добавити нового консультанта</Link>
                 <table>
                     <tbody>
                         {

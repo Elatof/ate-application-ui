@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { NotificationManager } from 'react-notifications';
-import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import Cookies from 'universal-cookie';
+import "./UpdateCustomer.css";
 
 class UpdateCustomer extends Component {
     constructor() {
@@ -29,12 +28,12 @@ class UpdateCustomer extends Component {
         let initialItems = [];
         console.log(Id)
         fetch(`http://localhost:5000/ate-api/customers/${Id}`)
-        .then(response => {
-            return response.json();
-        }).then(data => {
-            initialItems = data;
-            this.setState(data);
-        });
+            .then(response => {
+                return response.json();
+            }).then(data => {
+                initialItems = data;
+                this.setState(data);
+            });
     }
 
     onSubmit(e) {
@@ -63,25 +62,27 @@ class UpdateCustomer extends Component {
 
     render() {
         return (
-            <form onSubmit={this.onSubmit}>
-                <b>Обновлення даних по клієнту</b>
-                <div>
+            <div className="updateCustomer">
+                <form onSubmit={this.onSubmit}>
+                    <b>Обновлення даних по клієнту</b>
                     <p></p>
                         Ім'я:
-                            <input type="text" id="name" required={true} placeholder="Enter name" name="name" value={this.state.name} onChange={this.handleChange} />
+                <input className="updateCustomer" type="text" id="name" required={true} placeholder="Enter name" name="name" value={this.state.name} onChange={this.handleChange} />
                     <p></p>
                         Прізвище:
-                            <input type="text" id="surname" required={true} placeholder="Enter surname" name="surname" value={this.state.surname} onChange={this.handleChange} />
+                <input className="updateCustomer" type="text" id="surname" required={true} placeholder="Enter surname" name="surname" value={this.state.surname} onChange={this.handleChange} />
                     <p></p>
                         Телефон:
-                            <input type="tel" id="phone" required={true} placeholder="Enter phone" pattern="^[+][0-9]{12}$" name="phone" value={this.state.phone} onChange={this.handleChange} />
+                <input className="updateCustomer" type="tel" id="phone" required={true} placeholder="Enter phone" pattern="^[+][0-9]{12}$" name="phone" value={this.state.phone} onChange={this.handleChange} />
+                <p></p>     
                         Приклад формату: +380982561299
-                    <p></p>
+                <p></p>
                         Почтова скринька:
-                            <input type="email" id="email" required={true} placeholder="Enter email" name="email" value={this.state.email} onChange={this.handleChange} />
-                </div>
-                <button className='addComment'>Підтвердити обновлення</button>
-            </form>
+                <input className="updateCustomer" type="email" id="email" required={true} placeholder="Enter email" name="email" value={this.state.email} onChange={this.handleChange} />
+                <p></p>
+                    <button className='myButton'>Підтвердити обновлення</button>
+                </form>
+            </div>
         );
     }
 } export default UpdateCustomer;

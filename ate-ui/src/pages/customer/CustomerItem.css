@@ -1,0 +1,39 @@
+tr.bottom td{
+    border-bottom: 1px solid white;
+}
+
+img {
+    border-radius:28px;
+}
+
+button.deleteCustomer {
+	background-color:#b10000;
+	-moz-border-radius:20px;
+	-webkit-border-radius:20px;
+	border-radius:28px;
+	border:1px solid lightblue;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:13px;
+	padding:3px 25px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+
+button:hover {
+	background-color:#c20202;
+}
+
+a.updateLink {
+    background-color: rgb(184, 187, 4);
+    color: white;
+    padding: 3px 25px;
+    text-align: center; 
+    text-decoration: none;
+    display: inline-block;
+    border:1px solid lightblue;
+    border-radius:28px;
+    font-size: 13px;
+}

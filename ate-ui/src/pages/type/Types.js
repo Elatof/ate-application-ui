@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TypeItem from './TypeItem';
 import { Link } from 'react-router-dom';
+import './Types.css';
 
 class Types extends Component {
 
@@ -23,8 +24,8 @@ class Types extends Component {
 
     render() {
         return (
-            <div>
-                <Link to="/auth/types-create">Добавити новий тип спорядження</Link>
+            <div className = "mainDivType">
+                <Link className = "addNewType" to="/auth/types-create">Добавити новий тип спорядження</Link>
                 <table>
                     <tbody>
                         {

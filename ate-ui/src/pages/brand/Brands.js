@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import BrandItem from './BrandItem';
 import { BrowserRouter as Router, Link, NavLink } from 'react-router-dom';
 import Cookies from 'universal-cookie';
+import "./Brands.css"
 
 class Brands extends Component {
 
@@ -25,8 +26,9 @@ class Brands extends Component {
 
     render() {
         return (
-            <div>
-                <Link to ="/auth/brands-create">Добавити новий бренд</Link>
+            <div className = "mainDiv">
+                Список всіх брендів які виготовляють туристичне спорядження
+                <Link className="addNew" to ="/auth/brands-create">Добавити новий бренд</Link>
                 <table>
                     <tbody>
                         {

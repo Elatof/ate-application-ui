@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NotificationManager } from 'react-notifications';
+import "./NewCustomer.css";
 
 class NewCustomer extends Component {
     constructor() {
@@ -18,7 +19,7 @@ class NewCustomer extends Component {
     handleChange(e) {
         let target = e.target;
         let value = target.value;
-        this.setState({ [target.name] : value });
+        this.setState({ [target.name]: value });
     }
 
     onSubmit(e) {
@@ -47,25 +48,23 @@ class NewCustomer extends Component {
 
     render() {
         return (
-            <form onSubmit={this.onSubmit}>
-                <div>
+            <div className="newCustomer">
+                <form onSubmit={this.onSubmit}>
                     Створення нового клієнта.
                     <p></p>
-                        Ім'я:
-                            <input type="text" id="name" required={true} placeholder="Enter name" name="name" value={this.state.name} onChange={this.handleChange} />
+                    <input className="newCustomer" type="text" id="name" required={true} placeholder="Введіть ім'я" name="name" value={this.state.name} onChange={this.handleChange} />
                     <p></p>
-                        Прізвище:
-                            <input type="text" id="surname" required={true} placeholder="Enter surname" name="surname" value={this.state.surname} onChange={this.handleChange} />
+                    <input className="newCustomer" type="text" id="surname" required={true} placeholder="Введіть прізвище" name="surname" value={this.state.surname} onChange={this.handleChange} />
                     <p></p>
-                        Телефон:
-                            <input type="tel" id="phone" required={true} placeholder="Enter phone" pattern="^[+][0-9]{12}$" name="phone" value={this.state.phone} onChange={this.handleChange} />
-                        Приклад формату: +380982561299
+                    <input className="newCustomer" type="tel" id="phone" required={true} placeholder="Введіть мобільний телефон" pattern="^[+][0-9]{12}$" name="phone" value={this.state.phone} onChange={this.handleChange} />
                     <p></p>
-                        Почтова скринька:
-                            <input type="email" id="email" required={true} placeholder="Enter email" name="email" value={this.state.email} onChange={this.handleChange} />
-                </div>
-                <button>Підтвердити добавлення</button>
-            </form>
+                    Приклад формату: +380982561299
+                    <p></p>
+                    <input className="newCustomer" type="email" id="email" required={true} placeholder="Введіть почтову скриньку" name="email" value={this.state.email} onChange={this.handleChange} />
+                    <p></p>
+                    <button className="myButton">Підтвердити добавлення</button>
+                </form>
+            </div>
         );
     }
 }

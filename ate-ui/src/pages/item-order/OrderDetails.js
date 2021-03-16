@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Cookies from 'universal-cookie';
 import { NotificationManager } from 'react-notifications';
 import { Link } from 'react-router-dom';
+import "./OrderDetails.css";
 
 class OrderDetails extends Component {
 
@@ -85,38 +85,41 @@ class OrderDetails extends Component {
         let startD = item.startDate.slice(0, 10);
         let endD = item.endDate.slice(0, 10);
         return (
-            <div>
+            <div className="mainDivOrderDetails">
                 <b>Детальна інформація про замовлення</b><br />
                 <b>Номер оренди: </b>{item.id}<br />
                 <b>Дата початку: </b>{startD}<br />
                 <b>Дата завершення: </b>{endD}<br />
+                <hr></hr>
                 <b>Спорядження:</b><br />
                 <dd>
-                    <img src={item.item.imageUrl} width="150" height="150" />
+                    <img src={item.item.imageUrl} width="150" height="150" /><br />
                     <b>Повне ім'я: </b>{item.item.name}<br />
                     <b>Короткий опис: </b>{item.item.description}<br />
                     <b>Ціна за 1 день: </b>{item.item.price} грн.<br />
                     <b>Тип: </b>{item.item.type.name}<br />
                     <b>Бренд: </b>{item.item.brand.name} <img src={item.item.brand.urlImg} width="75" height="75" /><br />
-                    <Link exact to={"/auth/items-details/" + item.item.id}>Детальніше</Link>
+                    <Link className="details" exact to={"/auth/items-details/" + item.item.id}>Детальніше про спорядження</Link>
                 </dd>
-                <b>Замовник:</b><br />
-                <dd>
-                    <b>Ім'я: </b>{item.customer.name}<br />
-                    <b>Прізвище: </b>{item.customer.surname}<br />
-                    <b>Телефон: </b>{item.customer.phone}<br />
-                    <b>Поштова скринька: </b>{item.customer.email}<br />
-                </dd>
-                <b>Створив консультант:</b><br />
-                <dd>
-                    <b>Ім'я: </b>{item.employee.firstName}<br />
-                    <b>Прізвище: </b>{item.employee.secondName}<br />
-                    <b>Телефон: </b>{item.customer.phone}<br />
-                    <b>Поштова скринька: </b>{item.customer.email}<br />
-                </dd>
-                <button onClick={this.deleteElem}>Видалити</button>
-                <Link to={"/auth/orders-update/" + item.id}>Обновити</Link>
+                <div className="customerDetails">
+                    <b>Замовник:</b><br />
+                    <dd>
+                        <b>Ім'я: </b>{item.customer.name}<br />
+                        <b>Прізвище: </b>{item.customer.surname}<br />
+                        <b>Телефон: </b>{item.customer.phone}<br />
+                        <b>Поштова скринька: </b>{item.customer.email}<br />
+                    </dd>
+                </div>
+                <div className="emolyeeDetails">
+                    <b>Створив консультант:</b><br />
+                    <dd>
+                        <b>Ім'я: </b>{item.employee.firstName}<br />
+                        <b>Прізвище: </b>{item.employee.secondName}<br />
+                    </dd>
+                </div>
+                <button className="deleteOrder" onClick={this.deleteElem}>Видалити</button>
+                <Link className="updateOrder" to={"/auth/orders-update/" + item.id}>Обновити</Link>
             </div>
         );
     }
-} export default OrderDetails; 
+} export default OrderDetails;

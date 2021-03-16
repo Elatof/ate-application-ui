@@ -3,6 +3,7 @@ import { NotificationManager } from 'react-notifications';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import Cookies from 'universal-cookie';
+import "./UpdateOrder.css";
 
 class UpdateOrder extends Component {
     constructor() {
@@ -58,7 +59,6 @@ class UpdateOrder extends Component {
             .then(response => {
                 return response.json();
             }).then(data => {
-                console.log(data)
                 this.setState(data);
             });
     }
@@ -84,7 +84,7 @@ class UpdateOrder extends Component {
                 NotificationManager.warning('Помилка вхідних даних, повторіть спробу.');
             }
             if (response.status === 200) {
-                NotificationManager.success('Нове спорядження добавленно');
+                NotificationManager.success('Спорядження обновленно');
             }
         }).catch(function () {
             NotificationManager.error('Помилка сервера');
@@ -106,19 +106,20 @@ class UpdateOrder extends Component {
         }
 
         return (
-            <form onSubmit={this.onSubmit}>
-                <b>Створення нової оренди</b>
-                <div>
+            <div className="updateOrder">
+                <form onSubmit={this.onSubmit}>
+                <b>Обновлення оренди</b>
+                    <p />
                     Кінець оренди спорядження:
-                        <input type="date" id="endDate" required={true} value={this.state.endDate.slice(0, 10)} placeholder="Enter endDate" name="endDate" onChange={this.handleChange} />
+                        <input className="updateOrder" type="date" id="endDate" required={true} value={this.state.endDate.slice(0, 10)} placeholder="Enter endDate" name="endDate" onChange={this.handleChange} />
                     <p />
-                    Спорядження: <Dropdown options={itemNames} onChange={handleItem} value={this.state.item.name} placeholder="Виберіть спорядження" />
+                    Спорядження: <Dropdown className="dropDown" options={itemNames} onChange={handleItem} value={this.state.item.name} placeholder="Виберіть спорядження" />
                     <p />
-                    Клієнт: <Dropdown options={customerNames} onChange={handleCustomer} value={this.state.customer.name + " " + this.state.customer.surname} placeholder="Виберіть клієнта" />
+                    Клієнт: <Dropdown className="dropDown" options={customerNames} onChange={handleCustomer} value={this.state.customer.name + " " + this.state.customer.surname} placeholder="Виберіть клієнта" />
                     <p />
-                </div>
-                <button className='addComment'>Підтвердити обновлення</button>
+                <button className='myButton'>Підтвердити обновлення</button>
             </form>
+            </div>
         );
     }
 } export default UpdateOrder;

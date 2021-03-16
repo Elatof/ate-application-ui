@@ -10,7 +10,7 @@ function Admin(props) {
             <td>{typeItem.id} |</td>
             <td>{typeItem.firstName}</td>
             <td>{typeItem.secondName}</td>
-            <td><button onClick={() => deleteElem(typeItem.id)}>Видалити</button></td>
+            <td><button className="delete" onClick={() => deleteElem(typeItem.id)}>Видалити</button></td>
         </tr>
     );
 }

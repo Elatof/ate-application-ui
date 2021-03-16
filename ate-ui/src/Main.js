@@ -21,7 +21,9 @@ import Users from './pages/user/Users';
 import NewUser from './pages/user/NewUser';
 import Departments from './pages/department/Departments';
 import Admins from './pages/admin/Admins';
-import NewAdmin from './pages/user/NewUser';
+import NewAdmin from './pages/admin/NewAdmin';
+import Statistic from './pages/stat/CommonStatistic';
+import './Main.css';
 
 
 function parseJwt(token) {
@@ -54,19 +56,10 @@ function visibleLink(user, name) {
 function visiblecolorPick(user, name) {
   let answer = visibleLink(user, name);
 
-  if (answer){
-    return "black";
-  } 
-  return "grey";
-}
-
-function visiblepointPick(user, name) {
-  let answer = visibleLink(user, name);
-
-  if (answer){
-    return "auto";
-  } 
-  return "none";
+  if (answer) {
+    return "on";
+  }
+  return "off";
 }
 
 function Main() {
@@ -83,21 +76,31 @@ function Main() {
     return <Redirect to="/signIn" />
   }
   let user = parseJwt(cookies.get('token'));
-
+  let pr;
+  if (user.roles === "USER") {
+    pr = ", консультант"
+  }
+  if (user.roles === "ADMIN") {
+    pr = ", адміністратор"
+  }
+  if (user.roles === "MAIN_ADMIN") {
+    pr = ", головний адміністратор"
+  }
   return (
     <div>
-      {user.sub} Відділення №:{user.departmentId}
-      <p></p>
-      <button onClick={routeChange}>Вийти з системи</button>
-      <p></p>
-      <Link to={`${match.url}/brands`} style={{ pointerEvents: visiblepointPick(user, "brand"), color: visiblecolorPick(user, "brand") }}> Бренди </Link> |
-      <Link to={`${match.url}/types`} style={{ pointerEvents: visiblepointPick(user, "type"), color: visiblecolorPick(user, "type") }}> Типи </Link> |
-      <Link to={`${match.url}/items`} style={{ pointerEvents: visiblepointPick(user, "item"), color: visiblecolorPick(user, "item") }}> Спорядження відділенння </Link> |
-      <Link to={`${match.url}/customers`} style={{ pointerEvents: visiblepointPick(user, "customer"), color: visiblecolorPick(user, "customer") }}> Список клієнтів </Link> |
-      <Link to={`${match.url}/orders`} style={{ pointerEvents: visiblepointPick(user, "order"), color: visiblecolorPick(user, "order") }}> Список замовлень </Link> |
-      <Link to={`${match.url}/users`} style={{ pointerEvents: visiblepointPick(user, "user"), color: visiblecolorPick(user, "user") }}> Список консультантів </Link> |
-      <Link to={`${match.url}/departments`} style={{ pointerEvents: visiblepointPick(user, "department"), color: visiblecolorPick(user, "department") }}> Список відділень </Link> |
-      <Link to={`${match.url}/admins`} style={{ pointerEvents: visiblepointPick(user, "admin"), color: visiblecolorPick(user, "admin") }}> Список адміністраторів </Link> | 
+      <div className="userInfo">
+        Авторизований користувач: {user.sub}{pr} відділення №:{user.departmentId}
+      </div>
+      <button className="logOut" onClick={routeChange}>Вийти з системи</button>
+      <Link className = {visiblecolorPick(user, "brand")} to={`${match.url}/brands`}> Бренди </Link> 
+      <Link className = {visiblecolorPick(user, "type")} to={`${match.url}/types`}> Типи </Link> 
+      <Link className = {visiblecolorPick(user, "item")} to={`${match.url}/items`}> Спорядження відділенння </Link> 
+      <Link className = {visiblecolorPick(user, "customer")} to={`${match.url}/customers`}> Список клієнтів </Link> 
+      <Link className = {visiblecolorPick(user, "order")} to={`${match.url}/orders`}> Список замовлень </Link> 
+      <Link className = {visiblecolorPick(user, "user")} to={`${match.url}/users`}> Список консультантів </Link> 
+      <Link className = {visiblecolorPick(user, "department")} to={`${match.url}/departments`}> Список відділень </Link> 
+      <Link className = {visiblecolorPick(user, "admin")} to={`${match.url}/admins`}> Список адміністраторів </Link> 
+      <Link className = {visiblecolorPick(user, "stat")} to={`${match.url}/stat`}> Збір статистики </Link> 
       <Switch>
         {user.roles === "USER" && (<Route path={`${match.url}/brands`} component={Brands} />)}
         {user.roles === "USER" && (<Route path={`${match.url}/brands-create`} component={NewBrand} />)}
@@ -119,6 +122,7 @@ function Main() {
         {user.roles === "ADMIN" && (<Route path={`${match.url}/departments`} component={Departments} />)}
         {user.roles === "MAIN_ADMIN" && (<Route path={`${match.url}/admins`} component={Admins} />)}
         {user.roles === "MAIN_ADMIN" && (<Route path={`${match.url}/admins-create`} component={NewAdmin} />)}
+        {user.roles === "MAIN_ADMIN" && (<Route path={`${match.url}/stat`} component={Statistic} />)}
       </Switch>
     </div>
   );

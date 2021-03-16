@@ -1,20 +1,20 @@
 import React from 'react';
 import {NotificationManager} from 'react-notifications';
 import { Link } from 'react-router-dom';
-
+import "./CustomerItem.css";
 
 function CustomerItem(props) {
     const customerItem = props.item;
 
     return (
-        <tr>
+        <tr className= "bottom">
             <td>{customerItem.id} |</td>
             <td>{customerItem.name}</td>
             <td>{customerItem.surname}</td>
             <td>{customerItem.phone}</td>
             <td>{customerItem.email}</td>
-            <td><button onClick={() => deleteElem(customerItem.id)}>Видалити</button></td>
-            <td><Link to ={"/auth/customers-update/" + customerItem.id}>Змінити</Link></td>
+            <td><button className="deleteCustomer" onClick={() => deleteElem(customerItem.id)}>Видалити</button></td>
+            <td><Link className="updateLink" to ={"/auth/customers-update/" + customerItem.id}>Змінити</Link></td>
         </tr>
     );
 }

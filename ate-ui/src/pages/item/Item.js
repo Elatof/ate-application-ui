@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-
+import "./Item.css"
 
 function Item(props) {
     const item = props.item;
@@ -23,13 +23,13 @@ function Item(props) {
     }
 
     return (
-        <tr>
+        <tr className= "bottom">
             <td>{props.key2} |</td>
             <td><img src={item.imageUrl} alt="Icon of item" width="75" height="75"></img></td>
-            <td>{item.name}<br/>{item.type.name}</td>
+            <td><div className="des">{item.name}<br/>{item.type.name}</div></td>
             <td><img src={item.brand.urlImg} alt="Icon of brand" width="75" height="75"></img></td>
             <td>{storText}<br/><dd><img src={storImg} alt="Icon of stor" width="45" height="45"></img></dd></td>
-            <td><Link to={"items-details/" + item.id}>Детальніше</Link></td>
+            <td><Link className="details" to={"items-details/" + item.id}>Детальніше</Link></td>
         </tr>
     );
 }

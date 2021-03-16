@@ -1,0 +1,24 @@
+tr.bottom td{
+    border-bottom: 1px solid white;
+}
+
+img {
+    border-radius:28px;
+}
+
+a.details {
+    background-color: rgba(144,104,63,255);
+    color: white;
+    padding: 3px 7px;
+    text-align: center; 
+    text-decoration: none;
+    display: inline-block;
+    border:1px solid lightblue;
+    border-radius:28px;
+    font-size: 15px;
+}
+
+a.detais:hover, a:active {
+    background-color: rgba(146,95,72,255);
+}	
+

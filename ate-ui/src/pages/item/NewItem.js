@@ -3,6 +3,7 @@ import { NotificationManager } from 'react-notifications';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import Cookies from 'universal-cookie';
+import './NewItem.css';
 
 class NewItem extends Component {
     constructor() {
@@ -68,7 +69,7 @@ class NewItem extends Component {
 
     onSubmit(e) {
         e.preventDefault();
-        if(this.state.item.brand.id === '' || this.state.item.type.id === ''){
+        if (this.state.item.brand.id === '' || this.state.item.type.id === '') {
             NotificationManager.warning("Ви обов'язково маєте вибрати бренд та тип");
             return;
         }
@@ -113,28 +114,26 @@ class NewItem extends Component {
         }
 
         return (
-            <form onSubmit={this.onSubmit}>
-                <b>Створення нового спорядження на скаді</b>
-                <div>
-                    Назва:
-                        <input type="text" id="name" required={true} placeholder="Enter name" name="name" onChange={this.handleChange} />
+            <div className="newItem">
+                <form onSubmit={this.onSubmit}>
+                    <b>Створення нового спорядження на скаді</b>
                     <p />
-                    Короткий опис:
-                        <input type="text" id="description" required={true} placeholder="Enter description" name="description" onChange={this.handleChange} />
+                    <input className="newItem" type="text" id="name" required={true} placeholder="Введіть назву" name="name" onChange={this.handleChange} />
                     <p />
-                    Ціна орендя за день (грн.):
-                        <input type="number" id="price" required={true} placeholder="Enter price" name="price" onChange={this.handleChange} />
+                    <input className="newItem" type="text" id="description" required={true} placeholder="Введіть короткий опис" name="description" onChange={this.handleChange} />
                     <p />
-                    Тип: <Dropdown options={typeNames} onChange={handleType} placeholder="Виберіть тип" />
+                    <input className="newItem" type="number" id="price" required={true} placeholder="Введіть ціну" name="price" onChange={this.handleChange} />
                     <p />
-                    Бренд: <Dropdown options={brandNames} onChange={handleBrand} placeholder="Виберіть бренд" />
+                    <Dropdown className="dropDown" options={typeNames} onChange={handleType} placeholder="Виберіть тип" />
+                    <p />
+                    <Dropdown className="dropDown" options={brandNames} onChange={handleBrand} placeholder="Виберіть бренд" />
                     <p />
                     Зображення спорядження:
-                        <input type="file" id="image" required={true} accept="image/png, image/jpeg" onChange={this.handleImageChange} required />
+                    <input className="newItem" type="file" id="image" required={true} accept="image/png, image/jpeg" onChange={this.handleImageChange} required />
                     <p />
-                </div>
-                <button className='addComment'>Підтвердити добавлення</button>
-            </form>
+                    <button className='myButton'>Підтвердити добавлення</button>
+                </form>
+            </div>
         );
     }
 } export default NewItem;

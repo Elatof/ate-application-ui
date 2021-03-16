@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Cookies from 'universal-cookie';
 import { NotificationManager } from 'react-notifications';
 import { Link } from 'react-router-dom';
+import "./ItemDetails.css"
 
 class ItemDetails extends Component {
 
@@ -63,7 +64,7 @@ class ItemDetails extends Component {
                     NotificationManager.error('Помилка сервера');
                 }
                 if (response.status === 200) {
-                    NotificationManager.error('Успішне видалення');
+                    NotificationManager.success('Успішне видалення');
                 }
             });
             this.props.history.push('/auth/items');
@@ -84,9 +85,9 @@ class ItemDetails extends Component {
         }
 
         return (
-            <div>
+            <div className = "mainDivDetailsItem">
                 <b>Детальна інформація про спорядження</b><br />
-                <img src={this.state.Item.imageUrl} width="200" height="200" /><br />
+                <img className="mainImg" src={this.state.Item.imageUrl} width="350" height="350" /><br />
                 <b>Унікальне айді спорядження в БД: </b>{this.state.Item.id}<br />
                 <b>Повне ім'я: </b>{this.state.Item.name}<br />
                 <b>Короткий опис: </b>{this.state.Item.description}<br />
@@ -97,8 +98,8 @@ class ItemDetails extends Component {
                 <b>Тип: </b>{this.state.Item.type.name}<br />
                 <b>Бренд: </b>{this.state.Item.brand.name} <img src={this.state.Item.brand.urlImg} width="75" height="75" /><br />
                 <b>Наявність на складі: </b>{storText}  <img src={storImg} width="20" height="20" /><br />
-                <button onClick={this.deleteElem}>Видалити</button>
-                <Link to={"/auth/items-update/" + this.state.Item.id}>Обновити</Link>
+                <button className="delete" onClick={this.deleteElem}>Видалити</button>
+                <Link className="update" to={"/auth/items-update/" + this.state.Item.id}>Обновити</Link>
             </div>
         );
     }

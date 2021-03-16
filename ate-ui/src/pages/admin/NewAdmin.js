@@ -1,32 +1,21 @@
 import React, { Component } from 'react';
 import { NotificationManager } from 'react-notifications';
-import Dropdown from 'react-dropdown';
+import "./NewAdmin.css";
 
-class NewUser extends Component {
+class NewAdmin extends Component {
     constructor() {
         super();
         this.state = {
             firstName: '',
             secondName: '',
-            isAdmin: 1,
-            password: '',
-            departments: []
+            isAdmin: 2,
+            password: ''
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
 
-    componentDidMount() {
-        let initialItems = [];
-
-        fetch('http://localhost:5000/ate-api/departments/')
-            .then(response => { return response.json(); })
-            .then(data => {
-                initialItems = data.map((Department) => { return Department });
-                this.setState({ departments: initialItems });
-            });
-    }
 
     handleChange(e) {
         let target = e.target;
@@ -36,8 +25,7 @@ class NewUser extends Component {
 
     onSubmit(e) {
         e.preventDefault();
-        
-        
+
         fetch(`http://localhost:5000/ate-api/employees/`, {
             method: "POST",
             body: JSON.stringify(this.state),
@@ -52,7 +40,7 @@ class NewUser extends Component {
                 NotificationManager.warning('Помилка вхідних даних, повторіть спробу.');
             }
             if (response.status == 200) {
-                NotificationManager.success('Нового консультанта добавленно');
+                NotificationManager.success('Нового адміністратора добавленно');
             }
         }).catch(function () {
             NotificationManager.error('Помилка сервера');
@@ -60,21 +48,21 @@ class NewUser extends Component {
     }
 
     render() {
+
         return (
-            <form onSubmit={this.onSubmit}>
-                <div>
-                        Ім'я:
-                            <input type="text" id="firstName" placeholder="Enter name" name="firstName" required={true} value={this.state.firstName} onChange={this.handleChange} />
-                            <p />
-                        Прізвище:
-                            <input type="text" id="secondName" placeholder="Enter secondName" name="secondName" required={true} value={this.state.secondName} onChange={this.handleChange} />
-                            <p />
-                        Пароль:
-                            <input type="password" id="password" placeholder="Enter password" name="password" required={true} onChange={this.handleChange} />
-                </div>
-                <button className='addComment'>Підтвердити добавлення</button>
-            </form>
+            <div className="newAdmin">
+                Створення нового адміністратора
+                <form onSubmit={this.onSubmit}>
+                    <input className="newAdmin" type="text" id="firstName" placeholder="Введіть ім'я" name="firstName" required={true} value={this.state.firstName} onChange={this.handleChange} />
+                    <p />
+                    <input className="newAdmin" type="text" id="secondName" placeholder="Введіть прізвище" name="secondName" required={true} value={this.state.secondName} onChange={this.handleChange} />
+                    <p />
+                    <input className="newAdmin" type="password" id="password" placeholder="Введіть пароль" name="password" required={true} onChange={this.handleChange} />
+                    <p />
+                    <button className='myButton'>Підтвердити добавлення</button>
+                </form>
+            </div>
         );
     }
 }
-export default NewUser;
+export default NewAdmin;

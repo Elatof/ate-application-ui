@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import CustomerItem from './CustomerItem';
-import { BrowserRouter as Router, Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
+import "./Customers.css";
 
 class Customers extends Component {
 
@@ -25,8 +26,9 @@ class Customers extends Component {
 
     render() {
         return (
-            <div>
-                <Link to ="/auth/customers-create">Добавити нового клієнта</Link>
+            <div className="mainDivCustomer">
+                Список всіх клієнтів
+                <Link className="addNewCustomer" to="/auth/customers-create">Добавити нового клієнта</Link>
                 <table>
                     <tbody>
                         {

@@ -6,12 +6,12 @@ function User(props) {
     const typeItem = props.item;
 
     return (
-        <tr>
+        <tr className="bottom">
             <td>{typeItem.id} |</td>
             <td>{typeItem.firstName}</td>
             <td>{typeItem.secondName}</td>
             <td>{typeItem.department.name}</td>
-            <td><button onClick={() => deleteElem(typeItem.id)}>Видалити</button></td>
+            <td><button className="t" onClick={() => deleteElem(typeItem.id)}>Видалити</button></td>
         </tr>
     );
 }

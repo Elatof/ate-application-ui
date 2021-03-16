@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Department from './Department';
-
+import "./Departments.css";
 
 class Departments extends Component {
 
@@ -24,8 +24,9 @@ class Departments extends Component {
 
     render() {
         return (
-            <div>
-                <Link to="/auth/departments-create">Добавити нове відділення</Link>
+            <div className="mainDivDepartmnet">
+                Список відділень
+                <Link className="addNewDepartment" to="/auth/departments-create">Добавити нове відділення</Link>
                 <table>
                     <thead>
                         <tr>

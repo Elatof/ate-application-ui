@@ -3,6 +3,7 @@ import { NotificationManager } from 'react-notifications';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import Cookies from 'universal-cookie';
+import "./UpdateItem.css";
 
 class UpdateItem extends Component {
     constructor() {
@@ -76,7 +77,7 @@ class UpdateItem extends Component {
 
         let form_data = new FormData();
         let cookie = new Cookies();
-        if(this.state.image){
+        if (this.state.image) {
             form_data.append('file', this.state.image, this.state.image.name);
         }
 
@@ -115,29 +116,30 @@ class UpdateItem extends Component {
             this.state.brand = handleBrand;
         }
         return (
-            <form onSubmit={this.onSubmit}>
-                <b>Обновлення спорядження на скаді</b>
-                <div>
+            <div className="updateItem">
+                <form onSubmit={this.onSubmit}>
+                    <b>Обновлення спорядження на скаді</b>
+                    <p />
                     Назва:
-                        <input type="text" id="name" required={true} placeholder="Enter name" name="name" value={this.state.name} onChange={this.handleChange} />
+                        <input className="updateItem" type="text" id="name" required={true} placeholder="Enter name" name="name" value={this.state.name} onChange={this.handleChange} />
                     <p />
                     Короткий опис:
-                        <input type="text" id="description" required={true} placeholder="Enter description" name="description" value={this.state.description} onChange={this.handleChange} />
+                        <input className="updateItem" type="text" id="description" required={true} placeholder="Enter description" name="description" value={this.state.description} onChange={this.handleChange} />
                     <p />
                     Ціна орендя за день (грн.):
-                        <input type="number" id="price" required={true} placeholder="Enter price" name="price" value={this.state.price} onChange={this.handleChange} />
+                        <input className="updateItem" type="number" id="price" required={true} placeholder="Enter price" name="price" value={this.state.price} onChange={this.handleChange} />
                     <p />
-                    Тип: <Dropdown options={typeNames} value={this.state.type.name} onChange={handleType} placeholder="Виберіть тип" />
+                    Тип: <Dropdown className="dropDown" options={typeNames} value={this.state.type.name} onChange={handleType} placeholder="Виберіть тип" />
                     <p />
-                    Бренд: <Dropdown options={brandNames} value={this.state.brand.name} onChange={handleBrand} placeholder="Виберіть бренд" />
+                    Бренд: <Dropdown className="dropDown" options={brandNames} value={this.state.brand.name} onChange={handleBrand} placeholder="Виберіть бренд" />
                     <p />
                     Зображення спорядження:
                     <img src={this.state.imageUrl} width="200" height="200" />
-                    <input type="file" id="image" accept="image/png, image/jpeg" onChange={this.handleImageChange} />
+                    <input className="updateItem" type="file" id="image" accept="image/png, image/jpeg" onChange={this.handleImageChange} />
                     <p />
-                </div>
-                <button className='addComment'>Підтвердити обновлення</button>
-            </form>
+                    <button className="myButton">Підтвердити обновлення</button>
+                </form>
+            </div>
         );
     }
 } export default UpdateItem;

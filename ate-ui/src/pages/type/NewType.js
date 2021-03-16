@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NotificationManager } from 'react-notifications';
+import "./NewType.css"
 
 class NewType extends Component {
     constructor() {
@@ -43,15 +44,13 @@ class NewType extends Component {
 
     render() {
         return (
-            <form onSubmit={this.onSubmit}>
-                <div>
-                    <label>
-                        Назва типу спорядження:
-                            <input type="text" id="name" placeholder="Enter name" name="name" required={true} value={this.state.name} onChange={this.handleChange} />
-                    </label>
-                </div>
-                <button className='addComment'>Підтвердити добавлення</button>
-            </form>
+            <div className="newType">
+                <form className="newType" onSubmit={this.onSubmit}>
+                    <input className="newType" type="text" id="name" placeholder="Введіть наву нового типу" name="name" required={true} value={this.state.name} onChange={this.handleChange} />
+                    <p></p>
+                    <button className="newType" className='myButton'>Підтвердити добавлення</button>
+                </form>
+            </div>
         );
     }
 }

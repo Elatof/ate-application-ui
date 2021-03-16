@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NotificationManager } from 'react-notifications';
+import './NewBrand.css'
 
 class NewBrand extends Component {
     constructor() {
@@ -47,19 +48,16 @@ class NewBrand extends Component {
 
     render() {
         return (
-            <form onSubmit={this.onSubmit}>
-                <div>
-                    <label>
-                        Назва бренда:
-                            <input type="text" id="name" required={true} placeholder="Enter name" name="name" value={this.state.name} onChange={this.handleChange} />
-                    </label>
+            <div className="newBrand">
+                Добавлення нового бренду
+                <form className= "newBrand" onSubmit={this.onSubmit}>
+                    <input className= "newBrand" type="text" id="name" required={true} placeholder="Введіть ім'я" name="name" value={this.state.name} onChange={this.handleChange} />
                     <p></p>
-                        Іконка бренду:
-                    <input type="file" id="image" accept="image/png, image/jpeg" onChange={this.handleImageChange} required />
+                    <input className= "newBrand" type="file" id="image" accept="image/png, image/jpeg" onChange={this.handleImageChange} required />
                     <p></p>
-                </div>
-                <button className='addComment'>Підтвердити добавлення</button>
-            </form>
+                    <button className='myButton'>Підтвердити добавлення</button>
+                </form>
+            </div>
         );
     }
 }

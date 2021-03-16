@@ -31,12 +31,13 @@ class Items extends Component {
     render() {
         let inc = 0;
         return (
-            <div>
-                <Link to="/auth/items-create">Добавити нове спорядження до складу</Link>
+            <div className="mainDivType">
+                Список спорядження яке присутне на складі підприємства
+                <Link className="addNewType" to="/auth/items-create">Добавити нове спорядження до складу</Link>
                 <table>
                     <tbody>
                         {
-                            this.state.items.map(item => {
+                            this.state.items.map(item   => {
                                 inc = inc + 1;
                                 return <Item item={item} key={item.id} key2={inc} />
                             })
