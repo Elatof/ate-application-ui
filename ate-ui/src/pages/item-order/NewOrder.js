@@ -76,7 +76,7 @@ class NewOrder extends Component {
                 NotificationManager.warning('Помилка вхідних даних, повторіть спробу.');
             }
             if (response.status === 200) {
-                NotificationManager.success('Нове спорядження добавленно');
+                NotificationManager.success('Нове замоалення добавленно');
             }
         }).catch(function () {
             NotificationManager.error('Помилка сервера');

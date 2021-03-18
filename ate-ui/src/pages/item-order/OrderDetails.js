@@ -90,6 +90,7 @@ class OrderDetails extends Component {
                 <b>Номер оренди: </b>{item.id}<br />
                 <b>Дата початку: </b>{startD}<br />
                 <b>Дата завершення: </b>{endD}<br />
+                <b>Ціна оренди: </b>{item.price} грн.<br />
                 <hr></hr>
                 <b>Спорядження:</b><br />
                 <dd>

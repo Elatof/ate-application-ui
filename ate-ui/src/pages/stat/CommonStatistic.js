@@ -133,7 +133,7 @@ class Statistic extends Component {
           }
 
         return (
-            <div className="test">
+            <div>
                 <button className="myButton" onClick={() => window.print()}>Маніпуляції з PDF форматом</button>
                 <button className="myButton" onClick={() => downloadFile()}>Статистика в json форматі</button>
                 <h1>Збір загальної статистики</h1>

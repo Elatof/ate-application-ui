@@ -1,7 +1,7 @@
 div.departmentsNumberBorder {
     border-style: solid;
     border-radius: 5px;
-    top: 490px; left: 20px;
+    top: 520px; left: 20px;
     position: absolute;
     border-color: rgba(144,104,63,255);
     background-color:  rgba(49,51,50,255);
@@ -10,7 +10,7 @@ div.departmentsNumberBorder {
 div.departmentsProfitBorder {
     border-style: solid;
     border-radius: 5px;
-    top: 490px; left: 400px;
+    top: 520px; left: 400px;
     position: absolute;
     border-color: rgba(144,104,63,255);
     background-color:  rgba(49,51,50,255);
@@ -18,7 +18,7 @@ div.departmentsProfitBorder {
 div.employeeNumberBorder {
     border-style: solid;
     border-radius: 5px;
-    top: 490px; left: 750px;
+    top: 520px; left: 750px;
     position: absolute;
     border-color: rgba(144,104,63,255);
     background-color:  rgba(49,51,50,255);
@@ -26,7 +26,7 @@ div.employeeNumberBorder {
 div.employeeProfitBorder {
     border-style: solid;
     border-radius: 5px;
-    top: 490px; left: 1127px;
+    top: 520px; left: 1127px;
     position: absolute;
     border-color: rgba(144,104,63,255);
     background-color:  rgba(49,51,50,255);
@@ -35,7 +35,7 @@ div.employeeProfitBorder {
 div.typeItemNumberBorder {
     border-style: solid;
     border-radius: 5px;
-    top: 750px; left: 375px;
+    top: 760px; left: 375px;
     position: absolute;
     border-color: rgba(144,104,63,255);
     background-color:  rgba(49,51,50,255);
@@ -43,19 +43,20 @@ div.typeItemNumberBorder {
 div.typeItemProfitBorder {
     border-style: solid;
     border-radius: 5px;
-    top: 750px; left: 750px;
+    top: 760px; left: 750px;
     position: absolute;
     border-color: rgba(144,104,63,255);
     background-color:  rgba(49,51,50,255);
 }
 
 div.dateOrdersBorder {
+    background-color: white;
     border-style: solid;
     border-radius: 5px;
     top: 1000px; left: 20px;
     position: absolute;
     border-color: rgba(144,104,63,255);
-    background-color:  rgba(49,51,50,255);
+    
 }
 div.dateProfitBorder {
     border-style: solid;
@@ -63,7 +64,7 @@ div.dateProfitBorder {
     top: 1400px; left: 20px;
     position: absolute;
     border-color: rgba(144,104,63,255);
-    background-color:  rgba(49,51,50,255);
+    background-color: white;
 }
 
 div.borderText{

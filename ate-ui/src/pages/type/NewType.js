@@ -35,7 +35,7 @@ class NewType extends Component {
                 NotificationManager.warning('Помилка вхідних даних, повторіть спробу.');
             }
             if (response.status == 200) {
-                NotificationManager.success('Новий бренд добавленно');
+                NotificationManager.success('Новий тип добавленно');
             }
         }).catch(function () {
             NotificationManager.error('Помилка сервера');
@@ -45,6 +45,7 @@ class NewType extends Component {
     render() {
         return (
             <div className="newType">
+                Добавлення нового типу
                 <form className="newType" onSubmit={this.onSubmit}>
                     <input className="newType" type="text" id="name" placeholder="Введіть наву нового типу" name="name" required={true} value={this.state.name} onChange={this.handleChange} />
                     <p></p>

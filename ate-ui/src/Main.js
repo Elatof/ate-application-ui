@@ -68,6 +68,8 @@ function Main() {
   const cookies = new Cookies();
 
   const routeChange = () => {
+    const cookies = new Cookies();
+    cookies.set('token', ' ', { path: '/', maxAge: 0 });
     let path = `/signIn`;
     history.push(path);
   }
@@ -89,18 +91,18 @@ function Main() {
   return (
     <div>
       <div className="userInfo">
-        Авторизований користувач: {user.sub}{pr} відділення №:{user.departmentId}
+        Авторизований користувач: <span className="userInfo">{user.sub}</span>{pr} відділення №:<span className="userInfo">{user.departmentId}</span>
       </div>
       <button className="logOut" onClick={routeChange}>Вийти з системи</button>
-      <Link className = {visiblecolorPick(user, "brand")} to={`${match.url}/brands`}> Бренди </Link> 
-      <Link className = {visiblecolorPick(user, "type")} to={`${match.url}/types`}> Типи </Link> 
-      <Link className = {visiblecolorPick(user, "item")} to={`${match.url}/items`}> Спорядження відділенння </Link> 
-      <Link className = {visiblecolorPick(user, "customer")} to={`${match.url}/customers`}> Список клієнтів </Link> 
-      <Link className = {visiblecolorPick(user, "order")} to={`${match.url}/orders`}> Список замовлень </Link> 
-      <Link className = {visiblecolorPick(user, "user")} to={`${match.url}/users`}> Список консультантів </Link> 
-      <Link className = {visiblecolorPick(user, "department")} to={`${match.url}/departments`}> Список відділень </Link> 
-      <Link className = {visiblecolorPick(user, "admin")} to={`${match.url}/admins`}> Список адміністраторів </Link> 
-      <Link className = {visiblecolorPick(user, "stat")} to={`${match.url}/stat`}> Збір статистики </Link> 
+      <Link className={visiblecolorPick(user, "brand")} to={`${match.url}/brands`}> Бренди </Link>
+      <Link className={visiblecolorPick(user, "type")} to={`${match.url}/types`}> Типи </Link>
+      <Link className={visiblecolorPick(user, "item")} to={`${match.url}/items`}> Спорядження відділенння </Link>
+      <Link className={visiblecolorPick(user, "customer")} to={`${match.url}/customers`}> Список клієнтів </Link>
+      <Link className={visiblecolorPick(user, "order")} to={`${match.url}/orders`}> Список замовлень </Link>
+      <Link className={visiblecolorPick(user, "user")} to={`${match.url}/users`}> Список консультантів </Link>
+      <Link className={visiblecolorPick(user, "department")} to={`${match.url}/departments`}> Список відділень </Link>
+      <Link className={visiblecolorPick(user, "admin")} to={`${match.url}/admins`}> Список адміністраторів </Link>
+      <Link className={visiblecolorPick(user, "stat")} to={`${match.url}/stat`}> Збір статистики </Link>
       <Switch>
         {user.roles === "USER" && (<Route path={`${match.url}/brands`} component={Brands} />)}
         {user.roles === "USER" && (<Route path={`${match.url}/brands-create`} component={NewBrand} />)}

@@ -41,6 +41,7 @@ class Orders extends Component {
                             <th>Назва</th>
                             <th>Початок</th>
                             <th>Кінець</th>
+                            <th>Завершено</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -55,5 +56,4 @@ class Orders extends Component {
             </div>
         );
     }
-}
-export default Orders;
+}export default Orders;

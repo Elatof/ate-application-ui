@@ -87,10 +87,12 @@ class ItemDetails extends Component {
         return (
             <div className = "mainDivDetailsItem">
                 <b>Детальна інформація про спорядження</b><br />
-                <img className="mainImg" src={this.state.Item.imageUrl} width="350" height="350" /><br />
+                <img className="mainImgItem" src={this.state.Item.imageUrl} width="400" height="400" /><br />
                 <b>Унікальне айді спорядження в БД: </b>{this.state.Item.id}<br />
                 <b>Повне ім'я: </b>{this.state.Item.name}<br />
                 <b>Короткий опис: </b>{this.state.Item.description}<br />
+                <b>Загальна ціна: </b>{this.state.Item.commonPrice}<br />
+                <b>Стан: </b>{this.state.Item.state}<br />
                 <b>Ціна:</b><br />
                 <dd>За 1 день: {this.state.Item.price} грн.</dd>
                 <dd>За 3 дня: {this.state.Item.price * 3} грн.</dd>

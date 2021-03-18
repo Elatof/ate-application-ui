@@ -25,7 +25,7 @@ class SignInForm extends Component {
     onSubmit(e) {
         e.preventDefault();
         let status;
-        fetch(`http://localhost:5000/ate-api/authentication/login`, {
+        fetch(`https://ate-api.herokuapp.com/ate-api/authentication/login`, {
             method: "POST",
             body: JSON.stringify(this.state),
             headers: {
@@ -54,9 +54,7 @@ class SignInForm extends Component {
 
 
     render() {
-        const cookies = new Cookies();
-        cookies.remove('token');
-
+        
         return (
             <div className="signin">
                 Для подальшої роботи у системі потрібно ввести свої персональні дані
@@ -75,7 +73,7 @@ class SignInForm extends Component {
 
                     <button className="myButton">Увійти</button>
                 </form>
-                На цю сторінку вас автоматично переадресовує якщо: 1. Ви не авторизовані 2. Час сесії сплив (1 год.)
+                На цю сторінку вас автоматично переадресовує якщо:<span className="info">1. Ви не авторизовані 2. Час сесії сплив (1 год.)</span>
             </div>
         );
     }

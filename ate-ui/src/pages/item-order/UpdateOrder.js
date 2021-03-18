@@ -9,6 +9,7 @@ class UpdateOrder extends Component {
     constructor() {
         super();
         this.state = {
+            startDate: '',
             endDate: '',
             item: {
                 id: ''
@@ -70,6 +71,8 @@ class UpdateOrder extends Component {
             return;
         }
 
+        console.log(this.state.startDate)
+        
         fetch(`http://localhost:5000/ate-api/orders/`, {
             method: "PUT",
             body: JSON.stringify(this.state),
@@ -109,6 +112,9 @@ class UpdateOrder extends Component {
             <div className="updateOrder">
                 <form onSubmit={this.onSubmit}>
                 <b>Обновлення оренди</b>
+                    <p />
+                    Початок оренди спорядження:
+                        <input className="updateOrder" type="date" id="startDate" required={true} value={this.state.startDate.slice(0, 10)} placeholder="Enter startDate" name="startDate" onChange={this.handleChange} />
                     <p />
                     Кінець оренди спорядження:
                         <input className="updateOrder" type="date" id="endDate" required={true} value={this.state.endDate.slice(0, 10)} placeholder="Enter endDate" name="endDate" onChange={this.handleChange} />

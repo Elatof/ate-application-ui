@@ -22,6 +22,8 @@ class UpdateItem extends Component {
                 name: '',
                 urlImg: ''
             },
+            commonPrice: '',
+            state: '',
             imageUrl: null,
             brands: [],
             types: [],
@@ -81,7 +83,7 @@ class UpdateItem extends Component {
             form_data.append('file', this.state.image, this.state.image.name);
         }
 
-        fetch(`http://localhost:5000/ate-api/items/?id=${this.state.id}&name=${this.state.name}&description=${this.state.description}&price=${this.state.price}&type.id=${this.state.type.id}&brand.id=${this.state.brand.id}`, {
+        fetch(`http://localhost:5000/ate-api/items/?id=${this.state.id}&name=${this.state.name}&description=${this.state.description}&price=${this.state.price}&type.id=${this.state.type.id}&brand.id=${this.state.brand.id}&state=${this.state.state}&commonPrice=${this.state.commonPrice}`, {
             method: "PUT",
             body: form_data,
             headers: {
@@ -105,6 +107,7 @@ class UpdateItem extends Component {
     render() {
         let typeNames = this.state.types.map((type) => { return type.name });
         let brandNames = this.state.brands.map((brand) => { return brand.name });
+        let states = ["задовільно", "добре", "ідеально"];
         let handleType = (e) => {
             let handleType;
             this.state.types.forEach((type) => { if (e.value === type.name) handleType = type; });
@@ -115,6 +118,10 @@ class UpdateItem extends Component {
             this.state.brands.forEach((brand) => { if (e.value === brand.name) handleBrand = brand; });
             this.state.brand = handleBrand;
         }
+        let handleState = (e) => {
+            this.state.state = e.value;
+        }
+
         return (
             <div className="updateItem">
                 <form onSubmit={this.onSubmit}>
@@ -126,8 +133,13 @@ class UpdateItem extends Component {
                     Короткий опис:
                         <input className="updateItem" type="text" id="description" required={true} placeholder="Enter description" name="description" value={this.state.description} onChange={this.handleChange} />
                     <p />
+                    Ціна загальна (грн.):
+                        <input className="newItem" type="number" id="commonPrcie" required={true} placeholder="Введіть загальну ціну" name="commonPrice" value={this.state.commonPrice} onChange={this.handleChange} />
+                    <p />
                     Ціна орендя за день (грн.):
                         <input className="updateItem" type="number" id="price" required={true} placeholder="Enter price" name="price" value={this.state.price} onChange={this.handleChange} />
+                    <p />
+                    Стан: <Dropdown className="dropDown" options={states} value={this.state.state} onChange={handleState} placeholder="Виберіть стан" />
                     <p />
                     Тип: <Dropdown className="dropDown" options={typeNames} value={this.state.type.name} onChange={handleType} placeholder="Виберіть тип" />
                     <p />

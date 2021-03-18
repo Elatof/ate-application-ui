@@ -6,6 +6,11 @@ div.signin{
     border-color: rgba(144,104,63,255);
 }
 
+span.info{
+  color: white;
+  font-size: 0.95em;
+}
+
 input.signin, select {
     width: 15%;
     padding: 12px 20px;

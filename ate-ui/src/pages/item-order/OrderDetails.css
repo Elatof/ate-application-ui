@@ -51,7 +51,7 @@ button.deleteOrder {
 	font-family:Arial;
     position: 'relative';
     position: absolute;
-    top: 250px;
+    top: 290px;
     right: 20px;
 	font-size:13px;
 	padding:3px 25px;
@@ -70,13 +70,15 @@ a.updateOrder {
     text-align: center; 
     text-decoration: none;
     position: absolute;
-    top: 280px;
+    top: 320px;
     right: 20px;
     display: inline-block;
     border:1px solid lightblue;
     border-radius:28px;
     font-size: 13px;
 }
+
+
 
 a.update:hover, a:active {
     background-color: rgb(181, 201, 1);

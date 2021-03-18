@@ -21,7 +21,9 @@ class NewItem extends Component {
                     id: '',
                     name: '',
                     urlImg: ''
-                }
+                },
+                commonPrice: '',
+                state: ''
             },
             brands: [],
             types: [],
@@ -47,6 +49,8 @@ class NewItem extends Component {
             this.state.item.description = value;
         } else if (name === 'price') {
             this.state.item.price = value;
+        } else if (name === 'commonPrice') {
+            this.state.item.commonPrice = value;
         }
     }
 
@@ -68,6 +72,7 @@ class NewItem extends Component {
     }
 
     onSubmit(e) {
+        console.log(this.state)
         e.preventDefault();
         if (this.state.item.brand.id === '' || this.state.item.type.id === '') {
             NotificationManager.warning("Ви обов'язково маєте вибрати бренд та тип");
@@ -78,7 +83,7 @@ class NewItem extends Component {
         let cookie = new Cookies();
         form_data.append('file', this.state.image, this.state.image.name);
 
-        fetch(`http://localhost:5000/ate-api/items/?name=${this.state.item.name}&description=${this.state.item.description}&price=${this.state.item.price}&type.id=${this.state.item.type.id}&brand.id=${this.state.item.brand.id}`, {
+        fetch(`http://localhost:5000/ate-api/items/?name=${this.state.item.name}&description=${this.state.item.description}&price=${this.state.item.price}&type.id=${this.state.item.type.id}&brand.id=${this.state.item.brand.id}&state=${this.state.item.state}&commonPrice=${this.state.item.commonPrice}`, {
             method: "POST",
             body: form_data,
             headers: {
@@ -102,6 +107,7 @@ class NewItem extends Component {
     render() {
         let typeNames = this.state.types.map((type) => { return type.name });
         let brandNames = this.state.brands.map((brand) => { return brand.name });
+        let states = ["задовільно", "добре", "ідеально"];
         let handleType = (e) => {
             let handleType;
             this.state.types.forEach((type) => { if (e.value === type.name) handleType = type; });
@@ -111,6 +117,9 @@ class NewItem extends Component {
             let handleBrand;
             this.state.brands.forEach((brand) => { if (e.value === brand.name) handleBrand = brand; });
             this.state.item.brand = handleBrand;
+        }
+        let handleState = (e) => {
+            this.state.item.state = e.value;
         }
 
         return (
@@ -122,7 +131,11 @@ class NewItem extends Component {
                     <p />
                     <input className="newItem" type="text" id="description" required={true} placeholder="Введіть короткий опис" name="description" onChange={this.handleChange} />
                     <p />
-                    <input className="newItem" type="number" id="price" required={true} placeholder="Введіть ціну" name="price" onChange={this.handleChange} />
+                    <input className="newItem" type="number" id="commonPrcie" required={true} placeholder="Введіть загальну ціну" name="commonPrice" onChange={this.handleChange} />
+                    <p />
+                    <input className="newItem" type="number" id="price" required={true} placeholder="Введіть ціну оренди в день" name="price" onChange={this.handleChange} />
+                    <p />
+                    <Dropdown className="dropDown" options={states} onChange={handleState} placeholder="Виберіть стан" />
                     <p />
                     <Dropdown className="dropDown" options={typeNames} onChange={handleType} placeholder="Виберіть тип" />
                     <p />
