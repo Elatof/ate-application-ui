@@ -31,7 +31,7 @@ class NewBrand extends Component {
         console.log(this.state);
         let form_data = new FormData();
         form_data.append('file', this.state.image, this.state.image.name);
-        fetch(`http://localhost:5000/ate-api/brands/?brandDto=${this.state.name}`, {
+        fetch(`https://ate-api.herokuapp.com/ate-api/brands/?brandDto=${this.state.name}`, {
             method: "POST",
             body: form_data
         }).then(function (response) {

@@ -14,7 +14,7 @@ class Types extends Component {
 
     componentDidMount() {
         let initialItems = [];
-        fetch('http://localhost:5000/ate-api/types/')
+        fetch('https://ate-api.herokuapp.com/ate-api/types/')
             .then(response => { return response.json(); })
             .then(data => {
                 initialItems = data.map((TypeItem) => { return TypeItem });

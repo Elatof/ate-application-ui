@@ -16,7 +16,7 @@ class Brands extends Component {
     componentDidMount() {
         let initialItems = [];
         console.log(new Cookies().get('token'))
-        fetch('http://localhost:5000/ate-api/brands/')
+        fetch('https://ate-api.herokuapp.com/ate-api/brands/')
             .then(response => { return response.json(); })
             .then(data => {
                 initialItems = data.map((BrandItem) => { return BrandItem });

@@ -33,7 +33,7 @@ class NewOrder extends Component {
     componentDidMount() {
         let cookie = new Cookies();
         let initialItems = [];
-        fetch('http://localhost:5000/ate-api/items/?all=false', {
+        fetch('https://ate-api.herokuapp.com/ate-api/items/?all=false', {
             headers: {
                 "Authorization": "Bearer_" + cookie.get('token')
             }
@@ -44,7 +44,7 @@ class NewOrder extends Component {
                 this.setState({ items: initialItems });
             });
 
-        fetch('http://localhost:5000/ate-api/customers/')
+        fetch('https://ate-api.herokuapp.com/ate-api/customers/')
             .then(response => { return response.json(); })
             .then(data => {
                 initialItems = data.map((Customer) => { return Customer });
@@ -61,7 +61,7 @@ class NewOrder extends Component {
         let cookie = new Cookies();
 
         console.log(this.state)
-        fetch(`http://localhost:5000/ate-api/orders/`, {
+        fetch(`https://ate-api.herokuapp.com/ate-api/orders/`, {
             method: "POST",
             body: JSON.stringify(this.state),
             headers: {
@@ -76,7 +76,7 @@ class NewOrder extends Component {
                 NotificationManager.warning('Помилка вхідних даних, повторіть спробу.');
             }
             if (response.status === 200) {
-                NotificationManager.success('Нове замоалення добавленно');
+                NotificationManager.success('Нове замоалення  добавленно');
             }
         }).catch(function () {
             NotificationManager.error('Помилка сервера');

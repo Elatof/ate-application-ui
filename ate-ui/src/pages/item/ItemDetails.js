@@ -35,7 +35,7 @@ class ItemDetails extends Component {
         let cookie = new Cookies();
         const Id = this.props.match.params.Id;
         let initialItems = [];
-        fetch(`http://localhost:5000/ate-api/items/${Id}`, {
+        fetch(`https://ate-api.herokuapp.com/ate-api/items/${Id}`, {
             headers: {
                 "Authorization": "Bearer_" + cookie.get('token')
             }
@@ -57,7 +57,7 @@ class ItemDetails extends Component {
             "\nВидаллення спорядження може спричинити також видалення відповідного замовлення.")
         let res;
         if (answer) {
-            fetch(`http://localhost:5000/ate-api/items/${this.state.Item.id}`, {
+            fetch(`https://ate-api.herokuapp.com/ate-api/items/${this.state.Item.id}`, {
                 method: 'DELETE',
             }).then(function (response) {
                 if (response.status === 500) {

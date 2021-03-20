@@ -38,7 +38,7 @@ class UpdateOrder extends Component {
         let cookie = new Cookies();
         let initialItems = [];
         const Id = this.props.match.params.Id;
-        fetch('http://localhost:5000/ate-api/items/?all=false', {
+        fetch('https://ate-api.herokuapp.com/ate-api/items/?all=false', {
             headers: {
                 "Authorization": "Bearer_" + cookie.get('token')
             }
@@ -49,14 +49,14 @@ class UpdateOrder extends Component {
                 this.setState({ items: initialItems });
             });
 
-        fetch('http://localhost:5000/ate-api/customers/')
+        fetch('https://ate-api.herokuapp.com/ate-api/customers/')
             .then(response => { return response.json(); })
             .then(data => {
                 initialItems = data.map((Customer) => { return Customer });
                 this.setState({ customers: initialItems });
             });
 
-        fetch(`http://localhost:5000/ate-api/orders/${Id}`)
+        fetch(`https://ate-api.herokuapp.com/ate-api/orders/${Id}`)
             .then(response => {
                 return response.json();
             }).then(data => {
@@ -73,7 +73,7 @@ class UpdateOrder extends Component {
 
         console.log(this.state.startDate)
         
-        fetch(`http://localhost:5000/ate-api/orders/`, {
+        fetch(`https://ate-api.herokuapp.com/ate-api/orders/`, {
             method: "PUT",
             body: JSON.stringify(this.state),
             headers: {

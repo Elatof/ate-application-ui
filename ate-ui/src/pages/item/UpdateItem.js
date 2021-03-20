@@ -48,7 +48,7 @@ class UpdateItem extends Component {
         let cookie = new Cookies();
         const Id = this.props.match.params.Id;
         let initialItems = [];
-        fetch(`http://localhost:5000/ate-api/items/${Id}`, {
+        fetch(`https://ate-api.herokuapp.com/ate-api/items/${Id}`, {
             headers: {
                 "Authorization": "Bearer_" + cookie.get('token')
             }
@@ -59,14 +59,14 @@ class UpdateItem extends Component {
             this.setState(data);
         });
 
-        fetch('http://localhost:5000/ate-api/types/')
+        fetch('https://ate-api.herokuapp.com/ate-api/types/')
             .then(response => { return response.json(); })
             .then(data => {
                 initialItems = data.map((Type) => { return Type });
                 this.setState({ types: initialItems });
             });
 
-        fetch('http://localhost:5000/ate-api/brands/')
+        fetch('https://ate-api.herokuapp.com/ate-api/brands/')
             .then(response => { return response.json(); })
             .then(data => {
                 initialItems = data.map((Brand) => { return Brand });
@@ -83,7 +83,7 @@ class UpdateItem extends Component {
             form_data.append('file', this.state.image, this.state.image.name);
         }
 
-        fetch(`http://localhost:5000/ate-api/items/?id=${this.state.id}&name=${this.state.name}&description=${this.state.description}&price=${this.state.price}&type.id=${this.state.type.id}&brand.id=${this.state.brand.id}&state=${this.state.state}&commonPrice=${this.state.commonPrice}`, {
+        fetch(`https://ate-api.herokuapp.com/ate-api/items/?id=${this.state.id}&name=${this.state.name}&description=${this.state.description}&price=${this.state.price}&type.id=${this.state.type.id}&brand.id=${this.state.brand.id}&state=${this.state.state}&commonPrice=${this.state.commonPrice}`, {
             method: "PUT",
             body: form_data,
             headers: {

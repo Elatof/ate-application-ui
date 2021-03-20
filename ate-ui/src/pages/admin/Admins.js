@@ -14,7 +14,7 @@ class Admins extends Component {
 
     componentDidMount() {
         let initialItems = [];
-        fetch('http://localhost:5000/ate-api/employees/admins')
+        fetch('https://ate-api.herokuapp.com/ate-api/employees/admins')
             .then(response => { return response.json(); })
             .then(data => {
                 initialItems = data.map((Admin) => { return Admin });

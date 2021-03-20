@@ -16,7 +16,7 @@ class Customers extends Component {
     componentDidMount() {
         let initialItems = [];
         console.log(new Cookies().get('token'))
-        fetch('http://localhost:5000/ate-api/customers/')
+        fetch('https://ate-api.herokuapp.com/ate-api/customers/')
             .then(response => { return response.json(); })
             .then(data => {
                 initialItems = data.map((CustomerItem) => { return CustomerItem });

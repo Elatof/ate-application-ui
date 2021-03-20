@@ -21,7 +21,7 @@ class NewType extends Component {
 
     onSubmit(e) {
         e.preventDefault();
-        fetch(`http://localhost:5000/ate-api/types/`, {
+        fetch(`https://ate-api.herokuapp.com/ate-api/types/`, {
             method: "POST",
             body: JSON.stringify(this.state),
             headers: {

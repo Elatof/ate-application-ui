@@ -14,7 +14,7 @@ class Users extends Component {
 
     componentDidMount() {
         let initialItems = [];
-        fetch('http://localhost:5000/ate-api/employees/users')
+        fetch('https://ate-api.herokuapp.com/ate-api/employees/users')
             .then(response => { return response.json(); })
             .then(data => {
                 initialItems = data.map((User) => { return User });

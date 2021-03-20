@@ -26,7 +26,7 @@ class NewAdmin extends Component {
     onSubmit(e) {
         e.preventDefault();
 
-        fetch(`http://localhost:5000/ate-api/employees/`, {
+        fetch(`https://ate-api.herokuapp.com/ate-api/employees/`, {
             method: "POST",
             body: JSON.stringify(this.state),
             headers: {

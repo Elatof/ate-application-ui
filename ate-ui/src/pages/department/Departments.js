@@ -14,7 +14,7 @@ class Departments extends Component {
 
     componentDidMount() {
         let initialItems = [];
-        fetch('http://localhost:5000/ate-api/departments/')
+        fetch('https://ate-api.herokuapp.com/ate-api/departments/')
             .then(response => { return response.json(); })
             .then(data => {
                 initialItems = data.map((Department) => { return Department });

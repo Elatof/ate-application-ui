@@ -21,7 +21,7 @@ class NewUser extends Component {
     componentDidMount() {
         let initialItems = [];
 
-        fetch('http://localhost:5000/ate-api/departments/')
+        fetch('https://ate-api.herokuapp.com/ate-api/departments/')
             .then(response => { return response.json(); })
             .then(data => {
                 initialItems = data.map((Department) => { return Department });
@@ -38,7 +38,7 @@ class NewUser extends Component {
     onSubmit(e) {
         e.preventDefault();
 
-        fetch(`http://localhost:5000/ate-api/employees/`, {
+        fetch(`https://ate-api.herokuapp.com/ate-api/employees/`, {
             method: "POST",
             body: JSON.stringify(this.state),
             headers: {
@@ -74,7 +74,7 @@ class NewUser extends Component {
                     <p />
                     <input className="newUser" type="text" id="secondName" placeholder="Введіть прізвище" name="secondName" required={true} value={this.state.secondName} onChange={this.handleChange} />
                     <p />
-                    <input className="newUser" type="password" id="password" placeholder="Введіть паоль" name="password" required={true} onChange={this.handleChange} />
+                    <input className="newUser" type="password" id="password" placeholder="Введіть пароль" name="password" required={true} onChange={this.handleChange} />
                     <Dropdown className="dropDown" options={depatrmentNames} onChange={handleDepartment} placeholder="Виберіть відділення" />
                     <button className='myButtonNewUser'>Підтвердити добавлення</button>
                 </form>

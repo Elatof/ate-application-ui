@@ -56,14 +56,14 @@ class NewItem extends Component {
 
     componentDidMount() {
         let initialItems = [];
-        fetch('http://localhost:5000/ate-api/types/')
+        fetch('https://ate-api.herokuapp.com/ate-api/types/')
             .then(response => { return response.json(); })
             .then(data => {
                 initialItems = data.map((Type) => { return Type });
                 this.setState({ types: initialItems });
             });
 
-        fetch('http://localhost:5000/ate-api/brands/')
+        fetch('https://ate-api.herokuapp.com/ate-api/brands/')
             .then(response => { return response.json(); })
             .then(data => {
                 initialItems = data.map((Brand) => { return Brand });
@@ -74,7 +74,7 @@ class NewItem extends Component {
     onSubmit(e) {
         console.log(this.state)
         e.preventDefault();
-        if (this.state.item.brand.id === '' || this.state.item.type.id === '') {
+        if (this.state.item.brand.id === '' || this.state.item.type.id === '' || this.state.item.state === '') {
             NotificationManager.warning("Ви обов'язково маєте вибрати бренд та тип");
             return;
         }
@@ -83,7 +83,7 @@ class NewItem extends Component {
         let cookie = new Cookies();
         form_data.append('file', this.state.image, this.state.image.name);
 
-        fetch(`http://localhost:5000/ate-api/items/?name=${this.state.item.name}&description=${this.state.item.description}&price=${this.state.item.price}&type.id=${this.state.item.type.id}&brand.id=${this.state.item.brand.id}&state=${this.state.item.state}&commonPrice=${this.state.item.commonPrice}`, {
+        fetch(`https://ate-api.herokuapp.com/ate-api/items/?name=${this.state.item.name}&description=${this.state.item.description}&price=${this.state.item.price}&type.id=${this.state.item.type.id}&brand.id=${this.state.item.brand.id}&state=${this.state.item.state}&commonPrice=${this.state.item.commonPrice}`, {
             method: "POST",
             body: form_data,
             headers: {

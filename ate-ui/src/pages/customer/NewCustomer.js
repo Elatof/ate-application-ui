@@ -25,7 +25,7 @@ class NewCustomer extends Component {
     onSubmit(e) {
         e.preventDefault();
         console.log(this.state)
-        fetch(`http://localhost:5000/ate-api/customers/`, {
+        fetch(`https://ate-api.herokuapp.com/ate-api/customers/`, {
             method: "POST",
             body: JSON.stringify(this.state),
             headers: {

@@ -47,7 +47,7 @@ class OrderDetails extends Component {
 
     componentDidMount() {
         const Id = this.props.match.params.Id;
-        fetch(`http://localhost:5000/ate-api/orders/${Id}`)
+        fetch(`https://ate-api.herokuapp.com/ate-api/orders/${Id}`)
             .then(response => {
                 return response.json();
             }).then(data => {
@@ -64,7 +64,7 @@ class OrderDetails extends Component {
             "\nВи вевненні в свому рішені?")
         let res;
         if (answer) {
-            fetch(`http://localhost:5000/ate-api/orders/${this.state.id}`, {
+            fetch(`https://ate-api.herokuapp.com/ate-api/orders/${this.state.id}`, {
                 method: 'DELETE',
             }).then(function (response) {
                 if (response.status === 500) {

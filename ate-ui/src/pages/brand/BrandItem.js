@@ -27,7 +27,7 @@ let deleteElem = (id, name) => {
         "\nВидаллення бренду може спричинити також видалення відповідного спорядженя та їх замовлення.")
 
     if (answer) {
-        fetch(`http://localhost:5000/ate-api/brands/${id}`, {
+        fetch(`https://ate-api.herokuapp.com/ate-api/brands/${id}`, {
             method: 'DELETE',
         }).then(function (response) {
             if (response.status === 500) {

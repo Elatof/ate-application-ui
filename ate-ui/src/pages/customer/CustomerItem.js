@@ -24,7 +24,7 @@ let deleteElem = (id) => {
         "\nВидаллення клієнта може спричинити також видалення відповідного замовлення.")
 
     if (answer) {
-        fetch(`http://localhost:5000/ate-api/customers/${id}`, {
+        fetch(`https://ate-api.herokuapp.com/ate-api/customers/${id}`, {
             method: 'DELETE',
         }).then(function (response) {
             if (response.status === 500) {

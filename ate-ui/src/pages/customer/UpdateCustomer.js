@@ -27,7 +27,7 @@ class UpdateCustomer extends Component {
         const Id = this.props.match.params.Id;
         let initialItems = [];
         console.log(Id)
-        fetch(`http://localhost:5000/ate-api/customers/${Id}`)
+        fetch(`https://ate-api.herokuapp.com/ate-api/customers/${Id}`)
             .then(response => {
                 return response.json();
             }).then(data => {
@@ -39,7 +39,7 @@ class UpdateCustomer extends Component {
     onSubmit(e) {
         e.preventDefault();
 
-        fetch(`http://localhost:5000/ate-api/customers/`, {
+        fetch(`https://ate-api.herokuapp.com/ate-api/customers/`, {
             method: "PUT",
             body: JSON.stringify(this.state),
             headers: {

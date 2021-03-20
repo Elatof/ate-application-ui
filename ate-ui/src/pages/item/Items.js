@@ -17,7 +17,7 @@ class Items extends Component {
     componentDidMount() {
         let cookie = new Cookies();
         let initialItems = [];
-        fetch(`http://localhost:5000/ate-api/items/?all=${this.state.stor}`, {
+        fetch(`https://ate-api.herokuapp.com/ate-api/items/?all=${this.state.stor}`, {
             headers: {
                 "Authorization": "Bearer_" + cookie.get('token')
             }

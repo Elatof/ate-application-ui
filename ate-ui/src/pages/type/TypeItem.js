@@ -19,7 +19,7 @@ let deleteElem = (id, name) => {
         "\nВидаллення типу може спричинити також видалення відповідного спорядженя та їх замовлення.")
 
     if (answer) {
-        fetch(`http://localhost:5000/ate-api/types/${id}`, {
+        fetch(`https://ate-api.herokuapp.com/ate-api/types/${id}`, {
             method: 'DELETE',
         }).then(function (response) {
             if (response.status === 500) {
